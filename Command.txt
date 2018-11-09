@@ -1,0 +1,5 @@
+1. Add Bulma Css the proyect =>https://github.com/laravel-frontend-presets/bulma
+2. $ npm install
+3. $ npm run dev
+4. create database
+4. $ php artisan migrate
