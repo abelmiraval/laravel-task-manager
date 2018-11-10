@@ -37,8 +37,8 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $categoria = new Category();
-        $categoria->nombre = $request->nombre;
-        $categoria->descripcion = $request->descripcion;
+        $categoria->name = $request->name;
+        $categoria->descripction = $request->description;
         $categoria->save();
     }
 
@@ -74,8 +74,8 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $categoria = Category::findOrFail($request->id);
-        $categoria->nombre = $request->nombre;
-        $categoria->descripcion = $request->descripcion;
+        $categoria->name = $request->name;
+        $categoria->description = $request->description;
         $categoria->save();
     }
 

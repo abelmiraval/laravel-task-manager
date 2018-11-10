@@ -41594,9 +41594,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log("Component mounted.");
-    },
     data: function data() {
         return {
             nombre: '',
@@ -41726,7 +41723,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "field" }, [
-              _c("label", { staticClass: "label" }, [_vm._v("Activity")]),
+              _c("label", { staticClass: "label" }, [_vm._v("Nombre")]),
               _vm._v(" "),
               _c("div", { staticClass: "control" }, [
                 _c("input", {
@@ -41734,24 +41731,24 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.category.nombre,
-                      expression: "category.nombre"
+                      value: _vm.category.name,
+                      expression: "category.name"
                     }
                   ],
                   staticClass: "input",
                   attrs: {
                     type: "text",
-                    placeholder: "Text activity",
-                    id: "categoria",
-                    name: "categoria"
+                    placeholder: "name category",
+                    id: "category",
+                    name: "name"
                   },
-                  domProps: { value: _vm.category.nombre },
+                  domProps: { value: _vm.category.name },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.category, "nombre", $event.target.value)
+                      _vm.$set(_vm.category, "name", $event.target.value)
                     }
                   }
                 })
@@ -41769,24 +41766,24 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.category.descripcion,
-                      expression: "category.descripcion"
+                      value: _vm.category.description,
+                      expression: "category.description"
                     }
                   ],
                   staticClass: "input",
                   attrs: {
                     type: "text",
-                    placeholder: "Text description",
-                    name: "categoria",
-                    id: "categoria"
+                    placeholder: "name category",
+                    name: "description",
+                    id: "category"
                   },
-                  domProps: { value: _vm.category.descripcion },
+                  domProps: { value: _vm.category.description },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.category, "descripcion", $event.target.value)
+                      _vm.$set(_vm.category, "description", $event.target.value)
                     }
                   }
                 })
@@ -41850,9 +41847,9 @@ var staticRenderFns = [
       [
         _c("thead", [
           _c("tr", [
-            _c("th", [_vm._v("Category")]),
+            _c("th", [_vm._v("nombre")]),
             _vm._v(" "),
-            _c("th", [_vm._v("Activity")]),
+            _c("th", [_vm._v("description")]),
             _vm._v(" "),
             _c("th", [_vm._v("Priority")]),
             _vm._v(" "),
