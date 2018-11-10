@@ -41091,10 +41091,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      activity: {
+        category_id: 0,
+        name: "",
+        priority: ""
+      },
+      listActivity: [],
+      errors: []
+    };
+  },
   mounted: function mounted() {
     console.log("Component mounted.");
   },
@@ -41106,7 +41115,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     closeModal: function closeModal() {
       document.getElementById("modal-ter").classList.remove("is-active");
     },
-    addNewActivity: function addNewActivity() {}
+    addNewActivity: function addNewActivity() {
+      var _this = this;
+
+      axios.post("/activity", {
+        name: this.activity.name,
+        priority: this.activity.priority
+      }).then(function (response) {
+        _this.reset();
+        _this.closeModal();
+      }).catch(function (error) {
+        _this.errors = [];
+      });
+    },
+    reset: function reset() {
+      this.activity = {};
+    }
   }
 });
 
@@ -41154,180 +41178,193 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("section", { staticClass: "modal-card-body" }, [
-          _c("form", { attrs: { action: "" } }, [
-            _c("div", { staticClass: "field" }, [
-              _c("label", { staticClass: "label" }, [_vm._v("Category")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "control" }, [
-                _c("div", { staticClass: "select" }, [
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.activity.category_id,
-                          expression: "activity.category_id"
-                        }
-                      ],
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.activity,
-                            "category_id",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    [
-                      _c("option", [_vm._v("Select dropdown")]),
-                      _vm._v(" "),
-                      _c("option", [_vm._v("With options")]),
-                      _vm._v(" "),
-                      _c("option", [_vm._v("Action")])
-                    ]
-                  )
-                ])
-              ])
-            ]),
+          _c("div", { staticClass: "field" }, [
+            _c("label", { staticClass: "label" }, [_vm._v("Category")]),
             _vm._v(" "),
-            _c("div", { staticClass: "field" }, [
-              _c("label", { staticClass: "label" }, [_vm._v("Activity")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "control" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.activity.name,
-                      expression: "activity.name"
-                    }
-                  ],
-                  staticClass: "input",
-                  attrs: {
-                    type: "text",
-                    placeholder: "Text activity",
-                    id: "activity",
-                    name: "activity"
-                  },
-                  domProps: { value: _vm.activity.name },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.activity, "name", $event.target.value)
-                    }
-                  }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "field" }, [
-              _c("div", { staticClass: "control" }, [
-                _c("label", { staticClass: "radio" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.activity.priority,
-                        expression: "activity.priority"
-                      }
-                    ],
-                    attrs: { type: "radio", name: "priority" },
-                    domProps: { checked: _vm._q(_vm.activity.priority, null) },
-                    on: {
-                      change: function($event) {
-                        _vm.$set(_vm.activity, "priority", null)
-                      }
-                    }
-                  }),
-                  _vm._v(
-                    "\n                                    Low\n                            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("label", { staticClass: "radio" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.activity.priority,
-                        expression: "activity.priority"
-                      }
-                    ],
-                    attrs: { type: "radio", name: "priority" },
-                    domProps: { checked: _vm._q(_vm.activity.priority, null) },
-                    on: {
-                      change: function($event) {
-                        _vm.$set(_vm.activity, "priority", null)
-                      }
-                    }
-                  }),
-                  _vm._v(
-                    "\n                                    Medium\n                            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("label", { staticClass: "radio" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.activity.priority,
-                        expression: "activity.priority"
-                      }
-                    ],
-                    attrs: { type: "radio", name: "priority" },
-                    domProps: { checked: _vm._q(_vm.activity.priority, null) },
-                    on: {
-                      change: function($event) {
-                        _vm.$set(_vm.activity, "priority", null)
-                      }
-                    }
-                  }),
-                  _vm._v(
-                    "\n                                    High\n                            "
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "field is-grouped" }, [
-              _c("div", { staticClass: "control" }, [
+            _c("div", { staticClass: "control" }, [
+              _c("div", { staticClass: "select" }, [
                 _c(
-                  "button",
+                  "select",
                   {
-                    staticClass: "button is-link",
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.activity.category_id,
+                        expression: "activity.category_id"
+                      }
+                    ],
                     on: {
-                      click: function($event) {
-                        _vm.addNewActivity()
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.activity,
+                          "category_id",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
                       }
                     }
                   },
-                  [_vm._v("Add")]
+                  [
+                    _c("option", [_vm._v("Select dropdown")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("With options")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("Action")])
+                  ]
                 )
               ])
             ])
           ]),
           _vm._v(" "),
-          _vm._m(0)
+          _c("div", { staticClass: "field" }, [
+            _c("label", { staticClass: "label" }, [_vm._v("Activity")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "control" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.activity.name,
+                    expression: "activity.name"
+                  }
+                ],
+                staticClass: "input",
+                attrs: {
+                  type: "text",
+                  placeholder: "Text activity",
+                  id: "activity",
+                  name: "activity"
+                },
+                domProps: { value: _vm.activity.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.activity, "name", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "field" }, [
+            _c("div", { staticClass: "control" }, [
+              _c("label", { staticClass: "radio", attrs: { for: "low" } }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.activity.priority,
+                      expression: "activity.priority"
+                    }
+                  ],
+                  attrs: {
+                    type: "radio",
+                    name: "priority",
+                    id: "low",
+                    value: "low"
+                  },
+                  domProps: { checked: _vm._q(_vm.activity.priority, "low") },
+                  on: {
+                    change: function($event) {
+                      _vm.$set(_vm.activity, "priority", "low")
+                    }
+                  }
+                }),
+                _vm._v(
+                  "\n                                    Low\n                            "
+                )
+              ]),
+              _vm._v(" "),
+              _c("label", { staticClass: "radio", attrs: { for: "medium" } }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.activity.priority,
+                      expression: "activity.priority"
+                    }
+                  ],
+                  attrs: {
+                    type: "radio",
+                    name: "priority",
+                    id: "medium",
+                    value: "medium"
+                  },
+                  domProps: {
+                    checked: _vm._q(_vm.activity.priority, "medium")
+                  },
+                  on: {
+                    change: function($event) {
+                      _vm.$set(_vm.activity, "priority", "medium")
+                    }
+                  }
+                }),
+                _vm._v(
+                  "\n                                    Medium\n                            "
+                )
+              ]),
+              _vm._v(" "),
+              _c("label", { staticClass: "radio", attrs: { for: "high" } }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.activity.priority,
+                      expression: "activity.priority"
+                    }
+                  ],
+                  attrs: {
+                    type: "radio",
+                    name: "priority",
+                    id: "high",
+                    value: "high"
+                  },
+                  domProps: { checked: _vm._q(_vm.activity.priority, "high") },
+                  on: {
+                    change: function($event) {
+                      _vm.$set(_vm.activity, "priority", "high")
+                    }
+                  }
+                }),
+                _vm._v(
+                  "\n                                    High\n                            "
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "field is-grouped" }, [
+            _c("div", { staticClass: "control" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "button is-link",
+                  on: {
+                    click: function($event) {
+                      _vm.addNewActivity()
+                    }
+                  }
+                },
+                [_vm._v("Add")]
+              )
+            ])
+          ])
         ]),
         _vm._v(" "),
         _c("footer", { staticClass: "modal-card-foot" }, [
@@ -41352,75 +41389,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "table",
-      {
-        staticClass:
-          "table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
-      },
-      [
-        _c("thead", [
-          _c("tr", [
-            _c("th", [_vm._v("Category")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Activity")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Priority")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Action")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tbody", [
-          _c("tr", [
-            _c("td", [_vm._v("Lorem ipsum - cell A1")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Lorem ipsum - cell B1")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Lorem ipsum - cell C1")]),
-            _vm._v(" "),
-            _c("td", [_c("a", { staticClass: "delete danger" })])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [_vm._v("Lorem ipsum - cell A2")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Lorem ipsum - cell B2")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Lorem ipsum - cell C2")]),
-            _vm._v(" "),
-            _c("td", [_c("a", { staticClass: "delete danger" })])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [_vm._v("Lorem ipsum - cell A3")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Lorem ipsum - cell B3")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Lorem ipsum - cell C3")]),
-            _vm._v(" "),
-            _c("td", [_c("a", { staticClass: "delete danger" })])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [_vm._v("Lorem ipsum - cell A4")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Lorem ipsum - cell B4")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Lorem ipsum - cell C4")]),
-            _vm._v(" "),
-            _c("td", [_c("a", { staticClass: "delete danger" })])
-          ])
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
