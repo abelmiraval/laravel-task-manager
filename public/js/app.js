@@ -41522,76 +41522,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            nombre: '',
-            descripcion: '',
-            arrayCategory: []
-        };
-    },
+  data: function data() {
+    return {
+      category: {
+        name: "",
+        description: ""
+      },
+      listActivity: [],
+      errors: []
+    };
+  },
 
-    methods: {
-        listarCategory: function listarCategory() {
-            var mylist = this;
-            axios.get('/categoria').then(function (response) {
-                mylist.arrayCategory = response.data;
-            }).catch(function (error) {
-                console.log(error);
-            });
-        },
-        registrarCategory: function registrarCategory() {
-            var mylist = this;
-            axios.get('/categoria/registrar').then(function (response) {
-                mylist.arrayCategory = response.data;
-            }).catch(function (error) {
-                console.log(error);
-            });
-        },
-        openModal: function openModal() {
-            document.getElementById("modal-ter").classList.add("is-active");
-        },
-        closeModal: function closeModal() {
-            document.getElementById("modal-ter").classList.remove("is-active");
-        },
-        addNewActivity: function addNewActivity() {}
-    }
+
+  methods: {
+    /*listarCategory() {
+      let mylist = this;
+      axios
+        .get("/categoria")
+        .then(function(response) {
+          mylist.arrayCategory = response.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },*/
+
+    AddCategory: function AddCategory() {
+
+      axios.post("/category", {
+        'name': this.category.name,
+        'description': this.category.description
+      }).then(function (response) {
+        this.reset();
+        this.closeModal();
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    openModal: function openModal() {
+      document.getElementById("modal-term").classList.add("is-active");
+    },
+    closeModal: function closeModal() {
+      document.getElementById("modal-term").classList.remove("is-active");
+    },
+    addNewActivity: function addNewActivity() {}
+  }
+
 });
 
 /***/ }),
@@ -41603,10 +41581,12 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
+    _c("br"),
+    _vm._v(" "),
     _c(
       "button",
       {
-        staticClass: "button is-primary is-small modal-button",
+        staticClass: "button is-primary is-big modal-button",
         attrs: { "data-target": "modal-ter", "aria-haspopup": "true" },
         on: {
           click: function($event) {
@@ -41614,10 +41594,10 @@ var render = function() {
           }
         }
       },
-      [_vm._v("New Activity")]
+      [_vm._v("New Category")]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "modal", attrs: { id: "modal-ter" } }, [
+    _c("div", { staticClass: "modal", attrs: { id: "modal-term" } }, [
       _c("div", { staticClass: "modal-background" }),
       _vm._v(" "),
       _c("div", { staticClass: "modal-card" }, [
@@ -41639,8 +41619,6 @@ var render = function() {
         _vm._v(" "),
         _c("section", { staticClass: "modal-card-body" }, [
           _c("form", { attrs: { action: "" } }, [
-            _vm._m(0),
-            _vm._v(" "),
             _c("div", { staticClass: "field" }, [
               _c("label", { staticClass: "label" }, [_vm._v("Nombre")]),
               _vm._v(" "),
@@ -41675,9 +41653,11 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", [
-              _c("label", { attrs: { for: "descripcion" } }, [
-                _vm._v("Descripcion")
-              ]),
+              _c(
+                "label",
+                { staticClass: "label", attrs: { for: "descripcion" } },
+                [_vm._v("Descripcion")]
+              ),
               _vm._v(" "),
               _c("div", { staticClass: "control" }, [
                 _c("input", {
@@ -41709,6 +41689,8 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
             _c("div", { staticClass: "field is-grouped" }, [
               _c("div", { staticClass: "control" }, [
                 _c(
@@ -41717,7 +41699,7 @@ var render = function() {
                     staticClass: "button is-link",
                     on: {
                       click: function($event) {
-                        _vm.addNewActivity()
+                        _vm.AddCategory()
                       }
                     }
                   },
@@ -41727,7 +41709,15 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(1)
+          _c("br"),
+          _c(
+            "h2",
+            { staticStyle: { "text-align": "center", "font-weight": "bold" } },
+            [_vm._v("Listado de categorias")]
+          ),
+          _c("br"),
+          _vm._v(" "),
+          _vm._m(0)
         ]),
         _vm._v(" "),
         _c("footer", { staticClass: "modal-card-foot" }, [
@@ -41757,18 +41747,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "field" }, [
-      _c("label", { staticClass: "label" }, [_vm._v("Category")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "control" }, [
-        _c("div", { staticClass: "select" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c(
       "table",
       {
@@ -41780,53 +41758,17 @@ var staticRenderFns = [
           _c("tr", [
             _c("th", [_vm._v("nombre")]),
             _vm._v(" "),
-            _c("th", [_vm._v("description")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Priority")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Action")])
+            _c("th", [_vm._v("description")])
           ])
         ]),
         _vm._v(" "),
         _c("tbody", [
-          _c("tr", [
-            _c("td", [_vm._v("Lorem ipsum - cell A1")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Lorem ipsum - cell B1")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Lorem ipsum - cell C1")]),
-            _vm._v(" "),
-            _c("td", [_c("a", { staticClass: "delete danger" })])
-          ]),
+          _c("tr", [_c("td", [_vm._v("Lorem ipsum - cell B1")])]),
           _vm._v(" "),
           _c("tr", [
             _c("td", [_vm._v("Lorem ipsum - cell A2")]),
             _vm._v(" "),
-            _c("td", [_vm._v("Lorem ipsum - cell B2")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Lorem ipsum - cell C2")]),
-            _vm._v(" "),
-            _c("td", [_c("a", { staticClass: "delete danger" })])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [_vm._v("Lorem ipsum - cell A3")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Lorem ipsum - cell B3")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Lorem ipsum - cell C3")]),
-            _vm._v(" "),
-            _c("td", [_c("a", { staticClass: "delete danger" })])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [_vm._v("Lorem ipsum - cell A4")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Lorem ipsum - cell B4")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Lorem ipsum - cell C4")]),
-            _vm._v(" "),
-            _c("td", [_c("a", { staticClass: "delete danger" })])
+            _c("td", [_vm._v("Lorem ipsum - cell B2")])
           ])
         ])
       ]

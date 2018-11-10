@@ -76,7 +76,12 @@
             </div> -->
             <h1 style="">REGISTRO DE CATEGORIA Y ACTIVIDAD</h1>
             <br><br>
-            @yield('content')
+            <div>
+                @yield('content')
+            </div>
+             
+             
+            
         </div>
 
         <!-- Scripts -->
