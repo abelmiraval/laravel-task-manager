@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Activity;
+use App\Activity;
 
 class ActivityController extends Controller
 {
