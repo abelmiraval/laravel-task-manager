@@ -5,7 +5,7 @@
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
-                    <p class="modal-card-title">Register Activity</p>
+                    <p class="modal-card-title">Register Category</p>
                     <button class="delete" aria-label="close" @click="closeModal()"></button>
                 </header>
                 <section class="modal-card-body">
@@ -25,11 +25,18 @@
                         <div class="field">
                             <label class="label">Activity</label>
                             <div class="control">
-                                <input class="input" type="text" placeholder="Text activity" id="activity"  name="activity" v-model="activity.name">
+                                <input class="input" type="text" placeholder="Text activity" id="categoria"  name="categoria" v-model="category.nombre">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="descripcion">Descripcion</label>
+                            <div class="control">
+                                <input type="text" class="input" placeholder="Text description" name="categoria" id="categoria" v-model="category.descripcion">
                             </div>
                         </div>
 
-                        <div class="field">
+                        <!-- <div class="field">
                             <div class="control">
                                 <label class="radio">
                                     <input type="radio" name="priority" v-model="activity.priority">
@@ -44,7 +51,7 @@
                                         High
                                 </label>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="field is-grouped">
                             <div class="control">
                                 <button class="button is-link" @click="addNewActivity()">Add</button>

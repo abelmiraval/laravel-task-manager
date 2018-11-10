@@ -15,8 +15,8 @@ class CreateActivitiesTable extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre',50);
-            $table->enum('priority', array('low','medium,high'));
+            $table->string('name',50);
+            $table->enum('priority', array('low','medium','high'));
 
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
