@@ -8,10 +8,11 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Laravel {{ app()->version() }}</title>
+        <title>Team Space {{ app()->version() }}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Marck+Script|Satisfy" rel="stylesheet">
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -25,6 +26,7 @@
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
+                background-image: url("img/header.jpg");
             }
 
             .full-height {
@@ -91,28 +93,19 @@
                     @if (Auth::check())
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
+                        <a style="color: white;" href="{{ url('/login') }}">Login</a>
+                        <a style="color: white;" href="{{ url('/register') }}">Register</a>
                     @endif
                 </div>
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                    <p class="versioninfo">Version {{ app()->version() }}</p>
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="title m-b-md" style="color: #00d1b2; font-family: 'Marck Script', cursive; font-weight: bold; font-size: 150px;">
+                    Team Space
                 </div>
 
                 <div class="foundation_button_test">
-                    <p class="framwork_title">Bulma v0.7.2</p>
+                    <p class="framwork_title">Bulma</p>
                     <p class="framwork_title">Bulma Extension v3.0.0</p>
 
                     <div class="block">
@@ -127,3 +120,5 @@
         </div>
     </body>
 </html>
+<!---->
+

@@ -39,8 +39,7 @@ class ActivityController extends Controller
         $activity->category_id = 1;
         $activity->name = $request->name;
         $activity->priority = $request->priority;
-        $categoria->save();
-
+        $activity->save();
 
         return response()->json([
             'activity'    => $activity,
