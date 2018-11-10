@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Activity extends Model
 {
-    protected $fillable = ['nombre','priority'];
+    protected $table = 'activities';
+    protected $fillable = ['nombre','priority','category_id'];
 
     public function Categories()
     {

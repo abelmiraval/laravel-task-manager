@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Activity;
 
 class ActivityController extends Controller
 {
@@ -13,7 +14,7 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -34,7 +35,16 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $activity = new Activity();
+        $activity->category_id = 1;
+        $activity->name = $request->name;
+        $activity->priority = $request->priority;
+        $activity->save();
+
+        return response()->json([
+            'activity'    => $activity,
+            'message' => 'Success'
+        ], 200);
     }
 
     /**

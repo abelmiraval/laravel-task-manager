@@ -9,7 +9,6 @@
                     <button class="delete" aria-label="close" @click="closeModal()"></button>
                 </header>
                 <section class="modal-card-body">
-                    <form action="">
                         <div class="field">
                             <label class="label">Category</label>
                             <div class="control">
@@ -31,16 +30,16 @@
 
                         <div class="field">
                             <div class="control">
-                                <label class="radio">
-                                    <input type="radio" name="priority" v-model="activity.priority">
+                                <label class="radio" for="low">
+                                    <input type="radio" name="priority" id="low" value="low" v-model="activity.priority">
                                         Low
                                 </label>
-                                <label class="radio">
-                                    <input type="radio" name="priority" v-model="activity.priority">
+                                <label class="radio" for="medium">
+                                    <input type="radio" name="priority" id="medium" value="medium" v-model="activity.priority">
                                         Medium
                                 </label>
-                                <label class="radio">
-                                    <input type="radio" name="priority" v-model="activity.priority">
+                                <label class="radio" for="high">
+                                    <input type="radio" name="priority" id="high" value="high" v-model="activity.priority">
                                         High
                                 </label>
                             </div>
@@ -50,9 +49,8 @@
                                 <button class="button is-link" @click="addNewActivity()">Add</button>
                             </div>
                         </div>
-                    </form>
 
-                    <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                    <!-- <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
                         <thead>
                             <tr>
                                 <th>Category</th>
@@ -88,7 +86,7 @@
                                 <td><a class="delete danger"></a></td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> -->
                 </section>
                 <footer class="modal-card-foot">
                     <button class="button is-success">Save changes</button>
@@ -101,6 +99,17 @@
 
 <script>
 export default {
+  data() {
+    return {
+      activity: {
+        category_id: 0,
+        name: "",
+        priority: ""
+      },
+      listActivity: [],
+      errors: []
+    };
+  },
   mounted() {
     console.log("Component mounted.");
   },
@@ -111,7 +120,23 @@ export default {
     closeModal() {
       document.getElementById("modal-ter").classList.remove("is-active");
     },
-    addNewActivity() {}
+    addNewActivity() {
+      axios
+        .post("/activity", {
+          name: this.activity.name,
+          priority: this.activity.priority
+        })
+        .then(response => {
+          this.reset();
+          this.closeModal();
+        })
+        .catch(error => {
+          this.errors = [];
+        });
+    },
+    reset() {
+      this.activity = {};
+    }
   }
 };
 </script>
