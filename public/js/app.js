@@ -41563,39 +41563,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            nombre: '',
-            descripcion: '',
-            arrayCategory: []
-        };
-    },
+  data: function data() {
+    return {
+      nombre: "",
+      descripcion: "",
+      arrayCategory: []
+    };
+  },
 
-    methods: {
-        listarCategory: function listarCategory() {
-            var mylist = this;
-            axios.get('/categoria').then(function (response) {
-                mylist.arrayCategory = response.data;
-            }).catch(function (error) {
-                console.log(error);
-            });
-        },
-        registrarCategory: function registrarCategory() {
-            var mylist = this;
-            axios.get('/categoria/registrar').then(function (response) {
-                mylist.arrayCategory = response.data;
-            }).catch(function (error) {
-                console.log(error);
-            });
-        },
-        openModal: function openModal() {
-            document.getElementById("modal-ter").classList.add("is-active");
-        },
-        closeModal: function closeModal() {
-            document.getElementById("modal-ter").classList.remove("is-active");
-        },
-        addNewActivity: function addNewActivity() {}
-    }
+  methods: {
+    listarCategory: function listarCategory() {
+      var mylist = this;
+      axios.get("/categoria").then(function (response) {
+        mylist.arrayCategory = response.data;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    registrarCategory: function registrarCategory() {
+      var mylist = this;
+      axios.get("/categoria/registrar").then(function (response) {
+        mylist.arrayCategory = response.data;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    openModal: function openModal() {
+      document.getElementById("modal-ter").classList.add("is-active");
+    },
+    closeModal: function closeModal() {
+      document.getElementById("modal-ter").classList.remove("is-active");
+    },
+    addNewActivity: function addNewActivity() {}
+  }
 });
 
 /***/ }),

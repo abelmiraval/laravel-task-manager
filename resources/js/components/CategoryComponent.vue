@@ -28,7 +28,7 @@
                                 <input class="input" type="text" placeholder="name category" id="category"  name="name" v-model="category.name">
                             </div>
                         </div>
-                        
+
                         <div>
                             <label for="descripcion">Descripcion</label>
                             <div class="control">
@@ -108,39 +108,43 @@
 
 <script>
 export default {
-    data() {
-        return {
-            nombre : '',
-            descripcion : '',
-            arrayCategory : []
-        }
+  data() {
+    return {
+      nombre: "",
+      descripcion: "",
+      arrayCategory: []
+    };
+  },
+  methods: {
+    listarCategory() {
+      let mylist = this;
+      axios
+        .get("/categoria")
+        .then(function(response) {
+          mylist.arrayCategory = response.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
-    methods: {
-        listarCategory(){
-            let mylist = this;
-            axios.get('/categoria').then(function (response) {
-                mylist.arrayCategory = response.data;
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        },
-        registrarCategory() {
-            let mylist = this;
-            axios.get('/categoria/registrar').then(function (response) {
-                mylist.arrayCategory = response.data;
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        },
-        openModal() {
-        document.getElementById("modal-ter").classList.add("is-active");
-        },
-        closeModal() {
-        document.getElementById("modal-ter").classList.remove("is-active");
-        },
-        addNewActivity() {}
-    }
+    registrarCategory() {
+      let mylist = this;
+      axios
+        .get("/categoria/registrar")
+        .then(function(response) {
+          mylist.arrayCategory = response.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+    openModal() {
+      document.getElementById("modal-ter").classList.add("is-active");
+    },
+    closeModal() {
+      document.getElementById("modal-ter").classList.remove("is-active");
+    },
+    addNewActivity() {}
+  }
 };
 </script>
