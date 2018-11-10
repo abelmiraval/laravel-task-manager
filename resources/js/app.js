@@ -16,6 +16,8 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('new-activity-component', require('./components/NewActivityComponent.vue'));
+
 
 
 const app = new Vue({

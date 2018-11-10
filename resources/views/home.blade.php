@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Hello World</h1>
+<new-activity-component></new-activity-component>
 @endsection
