@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <button class="button is-primary is-small modal-button" data-target="modal-ter" aria-haspopup="true" @click="openModal()">New Activity</button>
+        <button class="button is-primary is-big modal-button" data-target="modal-ter" aria-haspopup="true" @click="openModal()">New Activity</button>
         <div id="modal-ter" class="modal">
             <div class="modal-background"></div>
             <div class="modal-card">
@@ -123,8 +123,8 @@ export default {
     addNewActivity() {
       axios
         .post("/activity", {
-          name: this.activity.name,
-          priority: this.activity.priority
+          'name': this.activity.name,
+          'priority': this.activity.priority
         })
         .then(response => {
           this.reset();

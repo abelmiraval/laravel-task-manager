@@ -14,11 +14,7 @@
                             <label class="label">Category</label>
                             <div class="control">
                                 <div class="select">
-                                    <select v-model="activity.category_id">
-                                            <option>Select dropdown</option>
-                                            <option>With options</option>
-                                            <option>Action</option>
-                                    </select>
+                                  
                                 </div>
                             </div>
                         </div>
@@ -108,6 +104,7 @@
 
 <script>
 export default {
+
     data() {
         return {
             nombre : '',

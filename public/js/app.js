@@ -41120,8 +41120,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this = this;
 
       axios.post("/activity", {
-        name: this.activity.name,
-        priority: this.activity.priority
+        'name': this.activity.name,
+        'priority': this.activity.priority
       }).then(function (response) {
         _this.reset();
         _this.closeModal();
@@ -41147,7 +41147,7 @@ var render = function() {
     _c(
       "button",
       {
-        staticClass: "button is-primary is-small modal-button",
+        staticClass: "button is-primary is-big modal-button",
         attrs: { "data-target": "modal-ter", "aria-haspopup": "true" },
         on: {
           click: function($event) {
@@ -41557,10 +41557,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -41643,53 +41639,7 @@ var render = function() {
         _vm._v(" "),
         _c("section", { staticClass: "modal-card-body" }, [
           _c("form", { attrs: { action: "" } }, [
-            _c("div", { staticClass: "field" }, [
-              _c("label", { staticClass: "label" }, [_vm._v("Category")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "control" }, [
-                _c("div", { staticClass: "select" }, [
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.activity.category_id,
-                          expression: "activity.category_id"
-                        }
-                      ],
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.activity,
-                            "category_id",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    [
-                      _c("option", [_vm._v("Select dropdown")]),
-                      _vm._v(" "),
-                      _c("option", [_vm._v("With options")]),
-                      _vm._v(" "),
-                      _c("option", [_vm._v("Action")])
-                    ]
-                  )
-                ])
-              ])
-            ]),
+            _vm._m(0),
             _vm._v(" "),
             _c("div", { staticClass: "field" }, [
               _c("label", { staticClass: "label" }, [_vm._v("Nombre")]),
@@ -41777,7 +41727,7 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(0)
+          _vm._m(1)
         ]),
         _vm._v(" "),
         _c("footer", { staticClass: "modal-card-foot" }, [
@@ -41803,6 +41753,18 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "field" }, [
+      _c("label", { staticClass: "label" }, [_vm._v("Category")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "control" }, [
+        _c("div", { staticClass: "select" })
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
