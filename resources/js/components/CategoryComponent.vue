@@ -23,16 +23,16 @@
                             </div>
                         </div>
                         <div class="field">
-                            <label class="label">Activity</label>
+                            <label class="label">Nombre</label>
                             <div class="control">
-                                <input class="input" type="text" placeholder="Text activity" id="categoria"  name="categoria" v-model="category.nombre">
+                                <input class="input" type="text" placeholder="name category" id="category"  name="name" v-model="category.name">
                             </div>
                         </div>
                         
                         <div>
                             <label for="descripcion">Descripcion</label>
                             <div class="control">
-                                <input type="text" class="input" placeholder="Text description" name="categoria" id="categoria" v-model="category.descripcion">
+                                <input type="text" class="input" placeholder="name category" name="description" id="category" v-model="category.description">
                             </div>
                         </div>
 
@@ -62,8 +62,8 @@
                     <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
                         <thead>
                             <tr>
-                                <th>Category</th>
-                                <th>Activity</th>
+                                <th>nombre</th>
+                                <th>description</th>
                                 <th>Priority</th>
                                 <th>Action</th>
 
@@ -108,9 +108,6 @@
 
 <script>
 export default {
-    mounted() {
-        console.log("Component mounted.");
-    },
     data() {
         return {
             nombre : '',
