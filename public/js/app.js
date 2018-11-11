@@ -41503,13 +41503,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -41518,30 +41511,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         name: "",
         description: ""
       },
-      listActivity: [],
+      arraycategory: [],
       errors: []
     };
+  },
+  mounted: function mounted() {
+    this.listCategory();
   },
 
 
   methods: {
-    /*listarCategory() {
-      let mylist = this;
-      axios
-        .get("/categoria")
-        .then(function(response) {
-          mylist.arrayCategory = response.data;
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    },*/
+    listCategory: function listCategory() {
+      var _this = this;
 
+      axios.get("/category").then(function (_ref) {
+        var data = _ref.data;
+
+        console.log(data);
+        _this.arraycategory = data.categories;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
     AddCategory: function AddCategory() {
-
       axios.post("/category", {
-        'name': this.category.name,
-        'description': this.category.description
+        name: this.category.name,
+        description: this.category.description
       }).then(function (response) {
         this.reset();
         this.closeModal();
@@ -41557,7 +41552,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     addNewActivity: function addNewActivity() {}
   }
-
 });
 
 /***/ }),
@@ -41677,24 +41671,7 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c("div", { staticClass: "field is-grouped" }, [
-              _c("div", { staticClass: "control" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "button is-link",
-                    on: {
-                      click: function($event) {
-                        _vm.AddCategory()
-                      }
-                    }
-                  },
-                  [_vm._v("Add")]
-                )
-              ])
-            ])
+            _c("br")
           ]),
           _vm._v(" "),
           _c("br"),
@@ -41705,13 +41682,46 @@ var render = function() {
           ),
           _c("br"),
           _vm._v(" "),
-          _vm._m(0)
+          _c(
+            "table",
+            {
+              staticClass:
+                "table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
+            },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.arraycategory, function(category) {
+                  return _c("tr", { key: category.id }, [
+                    _c("td", {
+                      domProps: { textContent: _vm._s(category.name) }
+                    }),
+                    _vm._v(" "),
+                    _c("td", {
+                      domProps: { textContent: _vm._s(category.description) }
+                    })
+                  ])
+                })
+              )
+            ]
+          )
         ]),
         _vm._v(" "),
         _c("footer", { staticClass: "modal-card-foot" }, [
-          _c("button", { staticClass: "button is-success" }, [
-            _vm._v("Save changes")
-          ]),
+          _c(
+            "button",
+            {
+              staticClass: "button is-success",
+              on: {
+                click: function($event) {
+                  _vm.AddCategory()
+                }
+              }
+            },
+            [_vm._v("Save changes")]
+          ),
           _vm._v(" "),
           _c(
             "button",
@@ -41735,32 +41745,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "table",
-      {
-        staticClass:
-          "table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
-      },
-      [
-        _c("thead", [
-          _c("tr", [
-            _c("th", [_vm._v("nombre")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("description")])
-          ])
-        ]),
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("nombre")]),
         _vm._v(" "),
-        _c("tbody", [
-          _c("tr", [_c("td", [_vm._v("Lorem ipsum - cell B1")])]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [_vm._v("Lorem ipsum - cell A2")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Lorem ipsum - cell B2")])
-          ])
-        ])
-      ]
-    )
+        _c("th", [_vm._v("descripcion")])
+      ])
+    ])
   }
 ]
 render._withStripped = true
