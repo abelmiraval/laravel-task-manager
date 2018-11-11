@@ -74,9 +74,10 @@
                     </div>
                 </div>
             </div> -->
-            <h1 style="">REGISTRO DE CATEGORIA Y ACTIVIDAD</h1>
+            <br>
+            <h1 style="font-weight: bold; font-size: 40px; font-weight: bold; text-align: center;">REGISTRO DE CATEGORIA Y ACTIVIDAD</h1>
             <br><br>
-            <div>
+            <div style="text-align: center; width: 150px; hight: 50px; margin-left: 100px; padding: 10px">
                 @yield('content')
             </div>
              
