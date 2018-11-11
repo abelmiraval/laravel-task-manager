@@ -44,11 +44,7 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="field is-grouped">
-                            <div class="control">
-                                <button class="button is-link" @click="addNewActivity()">Add</button>
-                            </div>
-                        </div>
+
 
                     <!-- <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
                         <thead>
@@ -89,7 +85,7 @@
                     </table> -->
                 </section>
                 <footer class="modal-card-foot">
-                    <button class="button is-success">Save changes</button>
+                    <button class="button is-success"  @click="addNewActivity()">Save changes</button>
                     <button class="button" @click="closeModal()">Cancel</button>
                 </footer>
             </div>
@@ -123,8 +119,8 @@ export default {
     addNewActivity() {
       axios
         .post("/activity", {
-          'name': this.activity.name,
-          'priority': this.activity.priority
+          name: this.activity.name,
+          priority: this.activity.priority
         })
         .then(response => {
           this.reset();

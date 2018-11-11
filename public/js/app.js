@@ -41088,10 +41088,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -41120,8 +41116,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this = this;
 
       axios.post("/activity", {
-        'name': this.activity.name,
-        'priority': this.activity.priority
+        name: this.activity.name,
+        priority: this.activity.priority
       }).then(function (response) {
         _this.reset();
         _this.closeModal();
@@ -41348,30 +41344,22 @@ var render = function() {
                 )
               ])
             ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "field is-grouped" }, [
-            _c("div", { staticClass: "control" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "button is-link",
-                  on: {
-                    click: function($event) {
-                      _vm.addNewActivity()
-                    }
-                  }
-                },
-                [_vm._v("Add")]
-              )
-            ])
           ])
         ]),
         _vm._v(" "),
         _c("footer", { staticClass: "modal-card-foot" }, [
-          _c("button", { staticClass: "button is-success" }, [
-            _vm._v("Save changes")
-          ]),
+          _c(
+            "button",
+            {
+              staticClass: "button is-success",
+              on: {
+                click: function($event) {
+                  _vm.addNewActivity()
+                }
+              }
+            },
+            [_vm._v("Save changes")]
+          ),
           _vm._v(" "),
           _c(
             "button",
