@@ -2,6 +2,7 @@
     <div class="container">
         <br>
         <button class="button is-primary is-big modal-button" data-target="modal-ter" aria-haspopup="true" @click="openModal()">New Category</button>
+       
         <div id="modal-term" class="modal">
             <div class="modal-background"></div>
             <div class="modal-card">
@@ -27,39 +28,31 @@
                         </div>
 
                         <br>
-                        <div class="field is-grouped">
-                            <div class="control">
-                                <button class="button is-link" @click="AddCategory()">Add</button>
-                            </div>
-                        </div>
+                       
                     </form>
+
                     <br><h2 style="text-align: center; font-weight: bold;">Listado de categorias</h2><br>
+
+
                     <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
                         <thead>
                             <tr>
                                 <th>nombre</th>
-                                <th>description</th>    
+                                <th>descripcion</th>    
                             </tr>
                         </thead>
+
                         <tbody>
-                            <tr>
-                                
-                                <td>Lorem ipsum - cell B1</td>
-                           
-                                
+                            <tr v-for="category in arraycategory" :key="category.id">
+                                <td v-text="category.name"></td>
+                                <td v-text="category.description"></td>     
                             </tr>
-                            <tr>
-                                <td>Lorem ipsum - cell A2</td>
-                                <td>Lorem ipsum - cell B2</td>
-                                
-                               
-                            </tr>
-                            
+
                         </tbody>
                     </table>
                 </section>
                 <footer class="modal-card-foot">
-                    <button class="button is-success">Save changes</button>
+                    <button class="button is-success" @click="AddCategory()">Save changes</button>
                     <button class="button" @click="closeModal()">Cancel</button>
                 </footer>
             </div>
@@ -69,37 +62,39 @@
 
 <script>
 export default {
+  data() {
+    return {
+      category: {
+        name: "",
+        description: ""
+      },
+      arraycategory: [],
+      errors: []
+    };
+  },
 
-    data() {
-        return {
-            category: {
-            name: "",
-            description: ""
-            },
-        listActivity: [],
-        errors: []
-        }
-    },
+  mounted() {
+    this.listCategory();
+  },
 
-      methods: {
-    /*listarCategory() {
-      let mylist = this;
+  methods: {
+    listCategory() {
       axios
-        .get("/categoria")
-        .then(function(response) {
-          mylist.arrayCategory = response.data;
+        .get("/category")
+        .then(({ data }) => {
+          console.log(data);
+          this.arraycategory = data.categories;
         })
-        .catch(function(error) {
+        .catch(error => {
           console.log(error);
         });
-    },*/
+    },
 
     AddCategory() {
-      
       axios
-        .post("/category",{
-            'name':this.category.name,
-            'description': this.category.description
+        .post("/category", {
+          name: this.category.name,
+          description: this.category.description
         })
         .then(function(response) {
           this.reset();
@@ -109,14 +104,16 @@ export default {
           console.log(error);
         });
     },
+
     openModal() {
       document.getElementById("modal-term").classList.add("is-active");
     },
+
     closeModal() {
       document.getElementById("modal-term").classList.remove("is-active");
     },
+
     addNewActivity() {}
   }
-  
 };
 </script>
